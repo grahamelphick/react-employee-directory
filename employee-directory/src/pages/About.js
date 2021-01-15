@@ -1,0 +1,23 @@
+import React from "react";
+import Container from "../components/Container";
+import Row from "../components/Row";
+import Col from "../components/Col";
+import SearchForm from "../components/SearchForm";
+import RandomEmployees from "../components/RandomEmployee";
+
+function About() {
+  return (
+    <div>
+      <SearchForm/>
+      <Container style={{ marginTop: 30 }}>
+        <Row>
+          <Col size="md-12">
+            <RandomEmployees/>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}
+
+export default About;
