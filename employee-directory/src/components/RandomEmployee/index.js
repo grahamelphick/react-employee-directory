@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import Container from "./Container";
-import Row from "./Row";
-import Col from "./Col";
-import Card from "./Card";
-import Wrapper from "./Wrapper";
-import SearchForm from "./SearchForm";
-import EmployeeDetails from "./EmployeeDetails";
-import API from "../utils/API";
+import Container from "../Container";
+import Row from "../Row";
+import Col from "../Col";
+import Card from "../Card";
+import Wrapper from "../Wrapper";
+import SearchForm from "../SearchForm";
+import EmployeeDetails from "../EmployeeDetails";
+import API from "../../utils/API";
 
 class RandomEmployees extends Component {
     state = {
         employees: [],
-        search: ''
+        search: '',
+        sort: ''
     };
 
     componentDidMount() {
@@ -45,6 +46,7 @@ class RandomEmployees extends Component {
 
         // this.state.employees.sort();
     };
+
 
     searchEmployee = (filter) => {
         console.log('Search', filter);
