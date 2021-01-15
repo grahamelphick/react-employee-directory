@@ -36,27 +36,38 @@ class RandomEmployees extends Component {
             .catch((err) => console.log(err));
     };
 
+    sortByName = () => {
+        console.log("sort button clicked");
+        console.log(this.state.employees);
+        const sortedList = this.state.employees.name.sort();
+        console.log(sortedList);
+        this.setState({ employees: sortedList });
+
+        // this.state.employees.sort();
+    };
 
     searchEmployee = (filter) => {
         console.log('Search', filter);
         const filteredList = this.state.employees.filter((employee) => {
             let values = Object.values(employee).join('').toLowerCase();
-            console.log(values);
             return values.indexOf(filter.toLowerCase()) !== -1;
         });
         this.setState({ employees: filteredList });
+        console.log(filteredList);
     };
 
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
         this.setState({
-            [name]: value
+            [name]: value,
         });
+        console.log('Handle ', this.state.search);
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log('Button Clicked', this.state.search, event);
         this.searchEmployee(this.state.search);
     };
 
@@ -66,7 +77,6 @@ class RandomEmployees extends Component {
                 <div className="container">
                     <div className="row">
                         <Col size="md-4">
-                            <h2>Employee Directory</h2>
                             <SearchForm
                                 value={this.state.search}
                                 handleInputChange={this.handleInputChange}
@@ -82,7 +92,7 @@ class RandomEmployees extends Component {
                                         <thead>
                                             <tr>
                                                 <th>Photo</th>
-                                                <th>Name</th>
+                                                <th><button onClick={this.sortByName}>Name</button></th>
                                                 <th>Phone</th>
                                                 <th>Email</th>
                                                 <th>DOB</th>
@@ -96,21 +106,13 @@ class RandomEmployees extends Component {
                                                     email={item.email}
                                                     phone={item.phone}
                                                     dob={item.dob}
+                                                    key={item.key}
                                                 />
                                             ))}
                                         </tbody>
                                     </table>
                                 </Card>
                             </Col>
-                            {/* <Col size="md-4">
-                        <Card heading="Search">
-                            <SearchForm
-                                value={this.state.search}
-                                handleInputChange={this.handleInputChange}
-                                handleFormSubmit={this.handleFormSubmit}
-                            />
-                        </Card>
-                    </Col> */}
                         </Row>
                     </Container>
                 </div>
