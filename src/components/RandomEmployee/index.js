@@ -40,11 +40,9 @@ class RandomEmployees extends Component {
     sortByName = () => {
         console.log("sort button clicked");
         console.log(this.state.employees);
-        const sortedList = this.state.employees.name.sort();
+        const sortedList = this.state.employees.sort();
         console.log(sortedList);
         this.setState({ employees: sortedList });
-
-        // this.state.employees.sort();
     };
 
 
